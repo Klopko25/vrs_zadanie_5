@@ -57,18 +57,20 @@ int main(void)
   MX_USART2_UART_Init();
 
 //  lsm6ds0_init();
-//  lps25hb_init();
+  lps25hb_init();
   hts221_init();
 
 
 
   while (1)
   {
-//	  hts221_get_humidity(humidity);
+	  hts221_get_humidity(humidity);
 	  hts221_get_temp(temperature);
+	  lps25hb_get_pressure(pressure);
 	  memset(formated_text, '\0', sizeof(formated_text));
 //	  sprintf(formated_text, "Humidity: %f\r", humidity[0]);
 	  sprintf(formated_text, "Temperature: %f\r", temperature[0]);
+//	  sprintf(formated_text, "Pressure: %f\r", pressure[0]);
 	  USART2_PutBuffer((uint8_t*)formated_text, strlen(formated_text));
 	  LL_mDelay(10);
   }

@@ -9,10 +9,10 @@
 #include "i2c.h"
 
 
-#define 	LPS25HB_DEVICE_ADDRESS_0				0xB8
+#define 	LPS25HB_DEVICE_ADDRESS_0				0xB9
 #define 	LPS25HB_DEVICE_ADDRESS_1				0xBB
 
-#define 	LPS25HB_WHO_AM_I_VALUE					0x00
+#define 	LPS25HB_WHO_AM_I_VALUE					0xBD
 #define 	LPS25HB_WHO_AM_I_ADDRES					0x0F
 
 #define 	LPS25HB_ADDRESS_CTRL1					0x20

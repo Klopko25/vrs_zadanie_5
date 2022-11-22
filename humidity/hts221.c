@@ -99,7 +99,7 @@ uint8_t hts221_init(void)
 
 	//acc device init
 
-	uint8_t ctrl1 = 8 << 4; // +-2g res
+	uint8_t ctrl1 = 129 << 0; // +-2g res
 	hts221_write_byte(HTS221_ADDRESS_CTRL1, ctrl1);
 
 	return status;
