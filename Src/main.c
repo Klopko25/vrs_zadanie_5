@@ -74,10 +74,10 @@ int main(void)
 
 
 	  memset(formated_text, '\0', sizeof(formated_text));
-//	  sprintf(formated_text, "Humidity: %f\r", humidity[0]);
-//	  sprintf(formated_text, "Temperature: %f\r", temperature[0]);
-//	  sprintf(formated_text, "Pressure: %f\r", pressure[0]);
-	  sprintf(formated_text, "Hight: %lf\r", hight);
+//	  sprintf(formated_text, "Humidity[C]: %0.1f\r", humidity[0]);
+	  sprintf(formated_text, "Temperature[percent]: %0.0f\r", temperature[0]);
+//	  sprintf(formated_text, "Pressure[hPa]: %0.2f\r", pressure[0]);
+//	  sprintf(formated_text, "Hight[m]: %0.2lf\r", hight);
 	  USART2_PutBuffer((uint8_t*)formated_text, strlen(formated_text));
 	  LL_mDelay(10);
   }
