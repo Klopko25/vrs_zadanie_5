@@ -50,6 +50,23 @@ void lps25hb_get_pressure(float* press)
 	*press = tmp_f;
 }
 
+//void lps25hb_get_hight(float* hight)
+//{
+////	uint16_t P_H, P_L, P_XL;
+//	uint8_t buffer[3];
+//	uint32_t combined = 0;
+//	float tmp_f;
+//
+//	lps25hb_readArray(buffer, LPS25HB_ADDRESS_PRESS_XL, 3);
+//	combined = (uint32_t)buffer[2] << 16 | (uint32_t)buffer[1] << 8 | (uint32_t)buffer[0];
+//
+//	tmp_f = ((float)combined/4096.0);
+//	tmp_f = tmp_f * 100;
+//
+//
+//	*hight = tmp_f;
+//}
+
 
 uint8_t lps25hb_init(void)
 {

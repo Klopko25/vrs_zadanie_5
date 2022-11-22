@@ -30,12 +30,14 @@
 #include "stdio.h"
 #include "string.h"
 #include "dma.h"
+#include<math.h>
 
 #define CHAR_BUFF_SIZE	30
 
 uint8_t temp = 0;
 float mag[3], acc[3];
 float pressure[1];
+double hight;
 float humidity[1], temperature[1];
 char formated_text[30], value_x[10], value_y[10], value_z[10];
 
@@ -67,10 +69,15 @@ int main(void)
 	  hts221_get_humidity(humidity);
 	  hts221_get_temp(temperature);
 	  lps25hb_get_pressure(pressure);
+
+	  hight = (temperature[0]+273.15)/(-0.0065)*(pow(((pressure[0]*100.0)/101325.0),(((-8.31432)*(-0.0065))/(9.80665*0.0289644)))-1);
+
+
 	  memset(formated_text, '\0', sizeof(formated_text));
 //	  sprintf(formated_text, "Humidity: %f\r", humidity[0]);
-	  sprintf(formated_text, "Temperature: %f\r", temperature[0]);
+//	  sprintf(formated_text, "Temperature: %f\r", temperature[0]);
 //	  sprintf(formated_text, "Pressure: %f\r", pressure[0]);
+	  sprintf(formated_text, "Hight: %lf\r", hight);
 	  USART2_PutBuffer((uint8_t*)formated_text, strlen(formated_text));
 	  LL_mDelay(10);
   }
