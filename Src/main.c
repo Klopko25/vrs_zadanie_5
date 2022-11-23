@@ -24,7 +24,7 @@
 #include "gpio.h"
 #include "usart.h"
 #include "lis3mdltr.h"
-//#include "lsm6ds0.h"
+#include "lsm6ds0.h"
 #include "lps25hb.h"
 #include "hts221.h"
 #include "stdio.h"
@@ -38,8 +38,9 @@ uint8_t temp = 0;
 float mag[3], acc[3];
 float pressure[1];
 double hight;
-float humidity[1], temperature[1];
-char formated_text[30], value_x[10], value_y[10], value_z[10];
+float humidity[1];
+float temperature[1];
+char formated_text[100], value_x[10], value_y[10], value_z[10];
 
 void SystemClock_Config(void);
 
@@ -58,7 +59,7 @@ int main(void)
   MX_DMA_Init();
   MX_USART2_UART_Init();
 
-//  lsm6ds0_init();
+  lsm6ds0_init();
   lps25hb_init();
   hts221_init();
 
@@ -74,12 +75,17 @@ int main(void)
 
 
 	  memset(formated_text, '\0', sizeof(formated_text));
-//	  sprintf(formated_text, "Humidity[C]: %0.1f\r", humidity[0]);
-	  sprintf(formated_text, "Temperature[percent]: %0.0f\r", temperature[0]);
-//	  sprintf(formated_text, "Pressure[hPa]: %0.2f\r", pressure[0]);
-//	  sprintf(formated_text, "Hight[m]: %0.2lf\r", hight);
+//	  sprintf(formated_text, "teplota [°C]: %0.1f\r", temperature[0]);
+//	  sprintf(formated_text, "rel. vlhkosť [%c]: %0.0f\r", '%', humidity[0]);
+//	  sprintf(formated_text, "tlak vzduchu [hPa]: %0.2f\r", pressure[0]);
+//	  sprintf(formated_text, "relatívna výška [m]: %0.2lf\r", hight);
+
+
+	  sprintf(formated_text, "teplota [C]: %0.1f\n relativna vlhkost [%c]: %0.0f\n tlak vzduchu [hPa]: %0.2f\n relativna vyska [m]: %0.2lf\r", temperature[0], '%', humidity[0], pressure[0], hight);
+
+
 	  USART2_PutBuffer((uint8_t*)formated_text, strlen(formated_text));
-	  LL_mDelay(10);
+	  LL_mDelay(100);
   }
 }
 

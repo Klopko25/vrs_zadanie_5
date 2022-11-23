@@ -29,7 +29,6 @@ void lps25hb_readArray(uint8_t * data, uint8_t reg, uint8_t length)
 
 void lps25hb_get_pressure(float* press)
 {
-//	uint16_t P_H, P_L, P_XL;
 	uint8_t buffer[3];
 	uint32_t combined = 0;
 	float tmp_f;
@@ -37,22 +36,12 @@ void lps25hb_get_pressure(float* press)
 	lps25hb_readArray(buffer, LPS25HB_ADDRESS_PRESS_XL, 3);
 	combined = (uint32_t)buffer[2] << 16 | (uint32_t)buffer[1] << 8 | (uint32_t)buffer[0];
 
-//	lps25hb_readArray(buffer, LPS25HB_ADDRESS_PRESS_L, 3);
-//	P_L = (((uint16_t)buffer[1]) << 8) | (uint16_t)buffer[0];
-//
-//	lps25hb_readArray(buffer, LPS25HB_ADDRESS_PRESS_XL, 3);
-//	P_XL = (((uint16_t)buffer[1]) << 8) | (uint16_t)buffer[0];
-
-//	combined = (P_H << 8) | P_L;
-//	combined = (combined << 8) | P_XL;
-
 	tmp_f = ((float)combined/4096.0);
 	*press = tmp_f;
 }
 
 //void lps25hb_get_hight(float* hight)
 //{
-////	uint16_t P_H, P_L, P_XL;
 //	uint8_t buffer[3];
 //	uint32_t combined = 0;
 //	float tmp_f;
