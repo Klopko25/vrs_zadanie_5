@@ -81,7 +81,8 @@ int main(void)
 //	  sprintf(formated_text, "relatívna výška [m]: %0.2lf\r", hight);
 
 
-	  sprintf(formated_text, "teplota [C]: %0.1f\n relativna vlhkost [%c]: %0.0f\n tlak vzduchu [hPa]: %0.2f\n relativna vyska [m]: %0.2lf\r", temperature[0], '%', humidity[0], pressure[0], hight);
+//	  sprintf(formated_text, "teplota [C]: %0.1f\n relativna vlhkost [%c]: %0.0f\n tlak vzduchu [hPa]: %0.2f\n relativna vyska [m]: %0.2lf\r", temperature[0], '%', humidity[0], pressure[0], hight);
+	  sprintf(formated_text, "%0.1f,%0.0f,%0.2f,%0.2lf\r", temperature[0], humidity[0], pressure[0], hight);
 
 
 	  USART2_PutBuffer((uint8_t*)formated_text, strlen(formated_text));

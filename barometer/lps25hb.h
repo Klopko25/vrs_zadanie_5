@@ -1,9 +1,4 @@
-/*
- * lps25hb.h
- *
- *  Created on: 07. 11. 202
- *      Author: LukasHasprun
- */
+
 
 #include "main.h"
 #include "i2c.h"

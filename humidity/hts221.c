@@ -1,9 +1,4 @@
-/*
- * lps25hb.c
- *
- *  Created on: 07. 11. 2022
- *      Author: LukasHasprun
- */
+
 
 #include "hts221.h"
 
